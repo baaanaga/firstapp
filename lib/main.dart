@@ -51,7 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(8.0),
             child: amountTextField("amount of items"),
           ),
-          calculateButton(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: calculateButton(),
+          ),
           showTotalText(),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -66,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget priceTextField(String text) {
     return TextField(
+      controller: price,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: text,
@@ -79,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget amountTextField(String text) {
     return TextField(
+      controller: amount,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: text,
@@ -103,11 +108,20 @@ class _MyHomePageState extends State<MyHomePage> {
       );
     }
   Widget calculateButton() {
-    return ElevatedButton(onPressed: () {}, child: Text("Calculate Total"));
+    return ElevatedButton(
+      onPressed: () {
+        if (price.text.isNotEmpty && amount.text.isNotEmpty) {
+          setState(() {
+            _total = double.parse(price.text) * double.parse(amount.text);
+          });
+        }
+      },
+      child: Text("Calculate Total")
+    );
   }
 
   Widget showTotalText() {
-    return Text("total : Bath");
+    return Text("total : $_total Baht");
   }
 
   Widget changeCalculateButton() {
