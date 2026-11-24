@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:material_ui/material_ui.dart';
 
 void main() {
@@ -55,6 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
         border: OutlineInputBorder(),
         labelText: "price per item",
       ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly,
+      ],
     );
   }
 }
