@@ -42,7 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(8.0),
             child: priceTextField(),
           ),
-          priceTextField(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: amountTextField(),
+          ),
           priceTextField(),
           Text("Hello World 4")
         ],
@@ -61,5 +64,26 @@ class _MyHomePageState extends State<MyHomePage> {
         FilteringTextInputFormatter.digitsOnly,
       ],
     );
+  }
+
+  Widget amountTextField() {
+    return TextField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        labelText: "amount of items"
+      ),
+      keyboardType: TextInputType.number,
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly,
+      ],
+    );
+  }
+
+  Widget calculateButton() {
+    return ElevatedButton(onPressed: () {}, child: Text("Calculate Total"));
+  }
+
+  Widget showTotalText() {
+    return Text("total : Bath");
   }
 }
