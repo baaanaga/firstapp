@@ -28,6 +28,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var price = TextEditingController();
+  var amount = TextEditingController();
+  var change = TextEditingController();
+  double _total = 0;
+  double _change = 0;
 
   @override
   Widget build(BuildContext context) {
