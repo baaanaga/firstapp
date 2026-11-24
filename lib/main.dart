@@ -35,7 +35,26 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Text("Hello World")
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: priceTextField(),
+          ),
+          priceTextField(),
+          priceTextField(),
+          Text("Hello World 4")
+        ],
+      )
+    );
+  }
+
+  Widget priceTextField() {
+    return TextField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        labelText: "price per item",
+      ),
     );
   }
 }
