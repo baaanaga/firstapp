@@ -151,6 +151,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget showChangeText() {
-    return Text("Change : $_change Bath");
+    return Text("Change : $_change Baht");
   }
 }
