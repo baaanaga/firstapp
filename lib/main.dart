@@ -52,7 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(8.0),
             child: receiveMoneyTextField("get money"),
           ),
-          Text("Hello World 4")
+          changeCalculateButton(),
+          showChangeText(),
         ],
       )
     );
@@ -102,5 +103,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget showTotalText() {
     return Text("total : Bath");
+  }
+
+  Widget changeCalculateButton() {
+    return ElevatedButton(onPressed: () {}, child: Text("Calculate Change"));
+  }
+
+  Widget showChangeText() {
+    return Text("Change : Bath");
   }
 }
