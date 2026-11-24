@@ -40,24 +40,29 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: priceTextField(),
+            child: priceTextField("price per item"),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: amountTextField(),
+            child: amountTextField("amount of items"),
           ),
-          priceTextField(),
+          calculateButton(),
+          showTotalText(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: receiveMoneyTextField("get money"),
+          ),
           Text("Hello World 4")
         ],
       )
     );
   }
 
-  Widget priceTextField() {
+  Widget priceTextField(String text) {
     return TextField(
       decoration: InputDecoration(
         border: OutlineInputBorder(),
-        labelText: "price per item",
+        labelText: text,
       ),
       keyboardType: TextInputType.number,
       inputFormatters: <TextInputFormatter>[
@@ -66,11 +71,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget amountTextField() {
+  Widget amountTextField(String text) {
     return TextField(
       decoration: InputDecoration(
         border: OutlineInputBorder(),
-        labelText: "amount of items"
+        labelText: text,
       ),
       keyboardType: TextInputType.number,
       inputFormatters: <TextInputFormatter>[
@@ -79,6 +84,18 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  Widget receiveMoneyTextField(String text) {
+      return TextField(
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: text,
+        ),
+        keyboardType: TextInputType.number,
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly,
+        ],
+      );
+    }
   Widget calculateButton() {
     return ElevatedButton(onPressed: () {}, child: Text("Calculate Total"));
   }
