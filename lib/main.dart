@@ -55,13 +55,22 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(8.0),
             child: calculateButton(),
           ),
-          showTotalText(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: showTotalText(),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: receiveMoneyTextField("get money"),
           ),
-          changeCalculateButton(),
-          showChangeText(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: changeCalculateButton(),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: showChangeText(),
+          ),
         ],
       )
     );
@@ -97,6 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget receiveMoneyTextField(String text) {
       return TextField(
+        controller: change,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: text,
@@ -125,10 +135,22 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget changeCalculateButton() {
-    return ElevatedButton(onPressed: () {}, child: Text("Calculate Change"));
+    return ElevatedButton(
+      onPressed: () {
+        if (change.text.isNotEmpty) {
+          setState(() {
+            _change = double.parse(change.text) - _total;
+          });
+        }
+        if (double.parse(change.text) < _total) {
+        ScaffoldMessenger.of(
+          context,
+          ).showSnackBar(SnackBar(content: Text("money is not enough")));
+        }
+      }, child: Text("Calculate Change"));
   }
 
   Widget showChangeText() {
-    return Text("Change : Bath");
+    return Text("Change : $_change Bath");
   }
 }
