@@ -52,6 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.blue
           ),
           ),
+          Image.asset("assets/lisa.PNG", height: 150),
+          SizedBox(height: 20,),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: priceTextField("price per item", price),
