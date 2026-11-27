@@ -10,11 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'GL',
+      title: 'Pattama World',
       theme: ThemeData(
+        fontFamily: 'maaja',
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'GL Shop'),
+      home: const MyHomePage(title: 'Pattama Shop'),
     );
   }
 }
@@ -31,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var price = TextEditingController();
   var amount = TextEditingController();
   var change = TextEditingController();
-  double _total = 0;
+  double _total = 0; // _ is private
   double _change = 0;
 
   @override
@@ -43,13 +44,21 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: priceTextField("price per item"),
+          Text("Pattama Shop",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontStyle: FontStyle.italic,
+            fontSize: 40,
+            color: Colors.blue
+          ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: amountTextField("amount of items"),
+            child: priceTextField("price per item", price),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: amountTextField("amount of items", amount),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -61,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: receiveMoneyTextField("get money"),
+            child: receiveMoneyTextField("get money", change),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -76,9 +85,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget priceTextField(String text) {
+  Widget priceTextField(String text, TextEditingController control) {
     return TextField(
-      controller: price,
+      controller: control,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: text,
@@ -90,9 +99,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget amountTextField(String text) {
+  Widget amountTextField(String text, TextEditingController control) {
     return TextField(
-      controller: amount,
+      controller: control,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: text,
@@ -104,9 +113,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget receiveMoneyTextField(String text) {
+  Widget receiveMoneyTextField(String text, TextEditingController control) {
       return TextField(
-        controller: change,
+        controller: control,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: text,
